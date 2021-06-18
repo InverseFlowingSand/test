@@ -7,6 +7,8 @@ data ends
 code segment
 start:  mov ax,data
         mov ds,ax
+        mov ax,1000H
+        mov ds:[0],ax
         
 code ends
 end start
