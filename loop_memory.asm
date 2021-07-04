@@ -4,7 +4,10 @@
 assume cs:code
 
 code segment
-start:
+start:	mov ax,2000h
+		mov ds,ax
+
+		mov bx,1000h
 
 
 		mov ax,4c00ch
