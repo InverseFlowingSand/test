@@ -3,8 +3,7 @@
 assume cs:code
 
 code segment
-		;上个版本CPU在loop中不断的做设置段寄存器的操作，其实是很浪费CPU的。
-		;可以把寄存器在外面设置好。
+		;复制内容没有规定只能用字节型长度来移动，可以用字型数据，速度提升一倍。
 start:	mov ax,0ffffh
 		mov ds,ax
 
@@ -12,11 +11,11 @@ start:	mov ax,0ffffh
 		mov es,ax
 
 		mov bx,0
-		mov cx,16
+		mov cx,8		;使用字型数据，所以只循环8次就行了。
 
-s:		mov dl,ds:[bx]
-		mov es:[bx],dl
-		inc bx
+s:		mov dx,ds:[bx]	;使用dx接收数据，而不是dl了
+		mov es:[bx],dx
+		add bx,2
 
 		loop s
 
