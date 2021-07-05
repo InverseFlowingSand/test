@@ -13,8 +13,8 @@ start:	mov ax,0ffffh
 		mov bx,0
 		mov cx,8		;使用字型数据，所以只循环8次就行了。
 
-s:		mov dx,ds:[bx]	;使用dx接收数据，而不是dl了
-		mov es:[bx],dx
+s:		push ds:[bx]	;既然是操作字型数据，那么使用栈来操作，直接可以把寄存器都省了。
+		pop es:[bx]
 		add bx,2
 
 		loop s
