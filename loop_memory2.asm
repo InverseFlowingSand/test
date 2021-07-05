@@ -3,20 +3,19 @@
 assume cs:code
 
 code segment
-start:
+		;上个版本CPU在loop中不断的做设置段寄存器的操作，其实是很浪费CPU的。
+		;可以把寄存器在外面设置好。
+start:	mov ax,0ffffh
+		mov ds,ax
+
+		mov ax,20h
+		mov es,ax
+
 		mov bx,0
 		mov cx,16
 
-		;没有设在栈段就直接操作是很危险的，要么设在栈段，要么不使用栈
-		;下面就不使用栈来操作。
-		;就频繁的更段寄存器就行了
-s:		mov ax,0ffffh
-		mov ds,ax
-		mov dl,ds:[bx]
-
-		mov ax,20h
-		mov ds,ax
-		mov ds:[bx],dl
+s:		mov dl,ds:[bx]
+		mov es:[bx],dl
 		inc bx
 
 		loop s
