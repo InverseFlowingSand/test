@@ -1,20 +1,25 @@
-;求FFFF:0 到 FFFF:F 字节型数据的和结果存放在dx中。
-;注意：是字节型数据放在16位字型寄存器中。
+;将内存 FFFF:0~FFFF:F 内存单元中的数据复制到 0:200~0:20f中。
+
 assume cs:code
 
 code segment
-start:	mov ax,ffffh
+start:	mov ax,0ffffh
 		mov ds,ax
 
 		mov bx,0
-		mov dx,0
-		mov ax,0	;用al读取字节型数据，用ax和dx相加。
-		mov cx,16	;移动16次
+		mov cx,16
 
-a_num:	mov al,ds:[bx]
-		add dx,ax
+		;ds不断的切换成目的地址和源地址来指向数据的来源和存放的位置
+		;所以我们要临时存储一下源地址，让它改变了且存储完数据后在变回来拿数据
+s:		push ds		;其实使用栈的时候，需要设置栈段的，不然还是像是直接修改内存中的内容一样。
+		mov dl,ds:[bx]
+
+		mov ax,20h
+		mov ds,ax
+		mov ds:[bx],dl
 		inc bx
-		loop a_num
+		pop ds
+		loop s
 
 		mov ax,4c00h
 		int 21h
