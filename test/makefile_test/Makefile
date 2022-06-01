@@ -1,8 +1,11 @@
 # 假如有3个头文件，和8个C文件
-# 最开始的第一版本（蛮荒版）
+# 最开始的第2版本（使用了变量）
+# 能提高代码的兼容性，而且省时间
 
-edit:main.o kbd.o command.o display.o insert.o search.o files.o utils.o
-	cc -o edit main.o kbd.o command.o display.o insert.o search.o files.o utils.o
+objects = main.o kbd.o command.o display.o insert.o search.o files.o utils.o
+
+edit:$(objects)
+	cc -o $(objects)
 
 main.o:main.c defs.h
 	cc -c main.c
@@ -22,4 +25,4 @@ utils.o:utils.c defs.h
 	cc -c utils.c
 
 clean:
-	rm edit main.o kbd.o command.o display.o insert.o search.o files.o utils.o
+	rm edit $(objects)
