@@ -18,7 +18,7 @@ Status CreateVin(VIN vin, const char *src)
 
 unsigned int VinLength(VIN vin)
 { // 返回车架号T的长度
-	return (unsigned int)vinString[0];
+	return (unsigned int)vin[0];
 }
 
-
+VinAge(VIN vin)

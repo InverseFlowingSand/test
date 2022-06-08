@@ -1,4 +1,4 @@
-#dendif MYHEAD_H
+#ifndef MYHEAD_H
 #define MYHEAD_H
 
 #define OK 1
