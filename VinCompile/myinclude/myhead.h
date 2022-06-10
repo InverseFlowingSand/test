@@ -13,6 +13,30 @@ enum{
 	TRUE,
 };
 
+/*车型表*/
+enum{
+	CARFALSE, //错误车型返回0
+	CAYENNE, //卡宴
+	TOUA, //途锐
+	Q7, //奥迪Q7
+	MACAN, //玛卡
+	PANAMERA, //帕拉梅拉
+	PHAETON, //辉腾
+	BOXSTER, //博克斯特
+	CAYMAN, //卡曼
+	CARRERA, //卡雷拉
+	TARGA, //塔噶
+	TURBO, //Turbo
+	GTS, //GTS
+};
+
+/*车系表*/
+enum{
+	MOLDFALSE, //错误车系返回0
+	PORSCHE, //保时捷
+	VW, //德国大众
+	AUDI, //奥迪
+};
 
 /* 函数内部做了个数的限制。
  * 传入参数：全部
