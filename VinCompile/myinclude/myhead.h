@@ -7,6 +7,8 @@
 typedef int Status;
 typedef char VIN[VINLEN+2]; //0号单元存放车架号的长度，从1开始，结尾还有个'\0'。
 typedef int HashElem;
+typedef int CarModel;
+typedef int CarType;
 
 enum{
 	FALSE,
@@ -32,7 +34,7 @@ enum{
 
 /*车系表*/
 enum{
-	MOLDFALSE, //错误车系返回0
+	MODELFALSE, //错误车系返回0
 	PORSCHE, //保时捷
 	VW, //德国大众
 	AUDI, //奥迪
@@ -52,5 +54,7 @@ Status CreateVin(VIN *dest, const char *src);
  */
 Status GetYear(void *yearArray, HashElem *vinAge, char ageFlag);
 
+CarModel GetModel(VIN vin);
+CarType GetType(int charModel, VIN vin); 
 
 #endif
