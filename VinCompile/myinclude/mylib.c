@@ -47,3 +47,26 @@ size_t VinLength(VIN vin)
 	return (size_t)vin[0];
 }
 
+CarModel GetModel(VIN vin)
+{
+	if(vin[1] != 'W')
+		return MODELFALSE;
+	if(vin[2] == 'P')
+		return PORSCHE;
+	else if(vin[2] == 'V')
+		return VW;
+	else if(vin[2]=='A' || vin[2]=='U')
+		return AUDI;
+	else
+		return MODELFALSE;
+}
+
+CarType GetType(int charModel, VIN vin) 
+{
+	switch(charModel){
+		case PORSCHE:
+		case VW:
+		case AUDI:
+		default:
+	}
+}
